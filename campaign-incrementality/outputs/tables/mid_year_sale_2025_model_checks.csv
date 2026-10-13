@@ -1,0 +1,9 @@
+check,result,value,guidance,family
+Residual autocorrelation (Ljung-Box),PASS,0.3843,"p > 0.05 means no leftover serial structure. Failing it points to a missing seasonal or trend component, not to a wrong effect.",adequacy
+Residual normality (Shapiro-Wilk),PASS,0.6871,"Affects the model's own interval only. The conformal interval used here does not assume normality, so this is informational.",adequacy
+First-order residual correlation,PASS,-0.2737,"Outside +/-0.22 suggests the local level is absorbing structure the covariates should explain. Read alongside Ljung-Box, which pools across lags and takes precedence.",adequacy
+Out-of-sample accuracy at campaign horizon,PASS,0.0194,Mean absolute forecast error over 22 rolling origins. Above 5% the counterfactual is too loose to price a campaign.,adequacy
+Backtest coverage of the pre-period,PASS,22.0,Fewer than ~10 origins makes the error distribution -- and therefore the interval -- unreliable.,adequacy
+Random common cause,PASS,0.002,Adding a noise predictor should move the estimate by well under a point. A large shift means the adjustment set is doing unstable work.,refutation
+Dummy outcome,PASS,0.07,A noise outcome must not yield a significant effect. The point estimate is free to wander; the interval must contain zero.,refutation
+Pre-period subset (62 weeks),PASS,0.0013,"Re-estimating on 20% less history should not move the answer much. If it does, the result is a property of the window chosen.",refutation

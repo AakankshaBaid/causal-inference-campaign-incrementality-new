@@ -1,0 +1,35 @@
+{
+ "mid_year_sale_2025": {
+  "true_part": 0.10093921647945603,
+  "true_comp": -0.031279500000000016,
+  "true_total_lift": 0.0646155708119112,
+  "true_total_value": 25837500.956874967,
+  "true_ros": 1.589185344936599,
+  "true_net": 1197396.276186354,
+  "true_breakeven": 0.04065955617938893,
+  "true_room_nights": 0.13116889125378495,
+  "true_stacking": 0.0230747422425465
+ },
+ "black_friday_campaign": {
+  "true_part": 0.09363295386840509,
+  "true_comp": -0.031279500000000016,
+  "true_total_lift": 0.058549884095652205,
+  "true_total_value": 21563323.95847267,
+  "true_ros": 0.7686263409269172,
+  "true_net": -811380.1369390744,
+  "true_breakeven": 0.07617470411571449,
+  "true_room_nights": 0.12145043741872574,
+  "true_stacking": 0.02156225689294319
+ },
+ "spring_sale_2025": {
+  "true_part": 0.10069049279567688,
+  "true_comp": -0.031279499999999905,
+  "true_total_lift": 0.06436928762582345,
+  "true_total_value": 23166769.51865834,
+  "true_ros": 2.2202454747763207,
+  "true_net": 1591555.190151712,
+  "true_breakeven": 0.028991968841782397,
+  "true_room_nights": 0.13086777888797885,
+  "true_stacking": 0.02302251906750421
+ }
+}
