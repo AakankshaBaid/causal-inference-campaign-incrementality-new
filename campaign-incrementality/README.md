@@ -12,7 +12,7 @@
 
 **The question:** when we discount, how much of the extra business did we actually create, and did it pay for itself?
 
-A mid-year promotion ran across 2,500 partner properties. Participating hotels sold **9.5% more** than expected. But competing hotels next door, which are also ours, sold **2.7% less** over the same weeks. Netting that off:
+A mid-year promotion ran across 2,500 partner properties. Participating hotels sold **9.5% more** than expected. But they took 2.7% from competing hotels next door, which are also ours. Netting that off:
 
 | | |
 | --- | ---: |
@@ -24,9 +24,9 @@ A mid-year promotion ran across 2,500 partner properties. Participating hotels s
 
 **The estimate says it paid back, but the measurement alone cannot prove it.** Total lift of +6.4% is above the 4.05% needed, but the calibrated 90% range, +3.0% to +10.0%, includes break-even. Because the data is simulated, the true answer is known (+6.5%, $25.8M, 1.59x): it did pay back, and the range holds it.
 
-**In plain terms:** the most likely outcome is that the campaign made money, about $1.2M on $2.0M spent. But the measurement is not precise enough to rule out that it only broke even or lost a little. In dollars, the range runs from a $0.5M loss to a $3.0M gain (0.75x to 2.46x). Repeating it is a reasonable bet, not a proven one.
+The most likely outcome is that the campaign made money, about $1.2M on $2.0M spent. But the measurement is not precise enough to rule out that it only broke even or lost a little. In dollars, the range runs from a $0.5M loss to a $3.0M gain (0.75x to 2.46x). Repeating it is a reasonable bet, not a proven one.
 
-Looking only at participating hotels would have **overstated the return by about 48%** (2.36x instead of 1.59x).
+Measuring only the participating hotels would have **overstated the return by about 48%** (2.36x instead of 1.59x).
 
 Three findings matter more than the headline:
 
@@ -40,11 +40,11 @@ Three findings matter more than the headline:
 
 ## Business Problem
 
-- We discount heavily every year, and reported sales lift includes business that would have arrived anyway
-- Campaigns run in busy seasons, so simple before-and-after comparison measures the calendar, not the campaign
+- Promotional campaigns commit significant discount and media spend every year, but reported lift includes demand that would have arrived anyway
+- Campaigns run during seasonal peaks, so simple before-and-after comparison measures the calendar, not the campaign
 - No clean A/B test exists: partners sign up contractually, and a price cut is visible to everyone
-- **Campaigns run in every market at once**, so there is no untouched market to compare against
-- A sale won from our own hotel down the road looks identical to new business in every standard report
+- **Campaigns run in every market at once**, so there is no untreated market to compare against
+- A sale won from a competing property down the road on our same platform looks identical to new demand in every standard report
 
 **The decision this supports:** how deep should the next promotion discount, who should be eligible, and should it run at all?
 
@@ -52,9 +52,9 @@ Three findings matter more than the headline:
 
 ## North Star Metric
 
-**Total incremental bookings versus the lift needed to break even.**
+**Total incremental booking value versus the lift needed to break even.**
 
-One number, because only one number decides spend. *Total* means participating hotels **plus** the effect on their competitors. *Incremental* means against what would have happened anyway. *Versus break-even* means a lift only counts as good news if it covers what it cost to produce. Lifts are measured against participating hotels' baseline sales.
+*Total* means participating hotels **plus** the effect on their competitors. *Incremental* means against a modelled baseline of what would have happened anyway. *Versus break-even* means a lift only counts as good news if it covers what it cost to produce. Lifts are measured against participating hotels' baseline sales.
 
 **Current result: +6.4% against a 4.05% break-even.** Above the line, though the 90% range (+3.0% to +10.0%) includes it.
 
@@ -70,7 +70,7 @@ One number, because only one number decides spend. *Total* means participating h
 - KPI decomposition · driver attribution · marketing effectiveness
 - Unit economics · break-even analysis · promotional pricing
 - Python · SQL · pandas · statsmodels · pytest
-- Executive communication · automated decision memos
+- Executive communication · automated decision reporting
 
 ---
 
@@ -78,18 +78,18 @@ One number, because only one number decides spend. *Total* means participating h
 
 ![Methodology](outputs/figures/exhibit_b_methodology.png)
 
-**We run two measurements and add them together.**
+**We run two causal models and add them together.**
 
 1. **Participating hotels:** how much more did they sell than they would have?
 2. **Their direct competitors:** what happened to the hotels next door?
 
-The second number carries its own sign. If competitors *lost* sales, the campaign moved business rather than creating it, and it comes off. If they *gained*, the campaign lifted the whole neighbourhood, and it adds. Assuming the answer in advance is how a campaign gets oversold or undersold.
+The second number carries its own sign. If competitors *lost* sales, the campaign moved business rather than creating it, and it comes off. If competitors *gained*, the campaign lifted the whole neighbourhood, and it adds. 
 
-**The hard part is finding something to compare against.** The promotion runs everywhere at once, so every untouched hotel still sits next to a discounted competitor. The yardstick is therefore **non-hotel bookings (flights, cars, activities)**. They run in the same markets, move with the same travel demand week to week, and a hotel deal cannot discount them. Supporting signals are marketplace-wide demand: search clicks, metasearch, destination searches, site traffic.
+**Choosing the comparison group** The promotion runs everywhere at once, so every untouched hotel still sits next to a discounted competitor. The yardstick is therefore **non-hotel bookings (flights, cars, activities)**. They run in the same markets, move with the same travel demand week to week, and a hotel deal cannot discount them. Supporting signals are marketplace-wide demand: search clicks, metasearch, destination searches, site traffic.
 
 Three more choices changed the answer materially:
 
-- **Last year's campaign.** Most participants ran the same promotion last year, and that episode sits inside the history. Ignoring it understates this year's result by about 3 points (measured below).
+- **Last year's campaign.** With high repeat participation the pre-period contains a treatment episode which sits inside the historical data and otherwise makes this year's result look smaller than it was. Ignoring it understates this year's result by about 3 points (measured below).
 - **The discount is not double-counted.** Sales are measured at the prices customers paid, so the price cut is already in the number. Only the cash-funded share of the discount, servicing and fixed costs are charged. Break-even is the lift needed to cover the cost actually incurred.
 - **The ranges are calibrated, not taken from the model.** Tested against known answers, the model's own 90% ranges were too narrow, so every reported range is widened by a factor of 2.00 fitted on 92 simulated campaigns (see Model Validation).
 
@@ -103,7 +103,7 @@ Three more choices changed the answer materially:
 | Known true lift | +10.1% | -3.1% | +6.5% |
 | Value | +$38.3M | -$12.4M | **+$25.9M** |
 
-Room nights rose **+12.5%** against participants' sales value of +9.5%. The gap is the price cut reaching travellers, which confirms the deal landed. The calibrated 90% range on the total is +3.0% to +10.0%.
+Room nights rose **+12.5%** against participants' value of +9.5%. The gap is the price cut reaching travellers, which confirms the deal landed. The calibrated 90% range on the total is +3.0% to +10.0%.
 
 **Economics:** $3.24M of contribution against $2.03M of cost gives **+$1.20M and a 1.59x return**. Break-even needed 4.05%; the estimate is +6.4%, but its range (+3.0% to +10.0%) includes break-even.
 
@@ -250,8 +250,8 @@ Both placebo tests read positive and sit close to their limits, consistent with 
 
 ## Business Recommendations
 
-1. **Run this campaign type again, but narrow who qualifies.** 83% of the discount went to bookings that would have happened anyway. Combined with choosing less-overlapping participants, the return could rise from 1.59x to about 2.2x if demand holds.
-2. **Never report the participating-hotel number alone.** It overstated the return by 48%.
+1. **Run this campaign type again, but narrow eligibility.** 83% of the discount went to bookings that would have happened anyway. Combined with choosing less-overlapping participants, the return could rise from 1.59x to about 2.2x if demand holds.
+2. **Report total incrementality, never the participant lift alone.** It overstated the return by 48%.
 3. **Pick participants who compete less with each other.** 32% of participants' gain was moved from our own hotels.
 4. **Hold back a random 5% of competitive sets next campaign.** Whole competitive sets, not single hotels: a held-back hotel still sits beside discounted rivals. It measures the total effect directly and detects lifts of 1.6% or more, against 2.5% for the model with calibrated ranges.
 5. **Treat any readout whose range includes break-even as unresolved.** The calibrated ranges are about ±3 points wide, so within about 3 points of break-even only a holdout can settle it. All three simulated campaigns, Black Friday included, fall in that band.
@@ -298,7 +298,7 @@ Prove it on an off-peak campaign first, then use the holdout pilot to calibrate 
 
 ## Notes
 
-Fully synthetic. No proprietary data or business logic from any employer appears here.
+Fully synthetic. No proprietary data appears here.
 
 - **Everything regenerates.** The three campaigns' tables, memos and figures, and the known truth, regenerate identically from the committed code and fixed seeds.
 - **The simulation's demand series cannot be moved by the campaign, by construction.** On live data, campaign marketing may lift search clicks and site traffic. The screen for this ("Yardsticks are clean") is advisory: on healthy simulated campaigns it still flagged 3 of 7, so a flag means "look at the series", not "reject the result".
